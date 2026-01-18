@@ -13,69 +13,90 @@ index.html <!DOCTYPE html><html lang="en">
       --cyan:#4ef0ff;
       --dark:#0b0b14;
       --glass:rgba(255,255,255,.14);
-    }
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
-    body{
-      background:
-        radial-gradient(1200px 600px at 10% -10%, rgba(124,108,255,.35), transparent 40%),
-        radial-gradient(1000px 500px at 90% 10%, rgba(255,78,205,.35), transparent 40%),
-        linear-gradient(180deg, #0b0b14, #141428);
-      color:#fff;min-height:100vh;overflow-x:hidden
-    }
-    header{
-      position:sticky;top:0;z-index:9;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(20,20,40,.75), rgba(20,20,40,.35));
-      border-bottom:1px solid rgba(255,255,255,.12)
-    }
-    .nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px}
-    .logo{font-weight:800;letter-spacing:.5px}
-    .logo span{color:var(--pink)}
-    .nav a{color:#fff;text-decoration:none;margin-left:16px;opacity:.9}
-    .nav a:hover{opacity:1;color:var(--cyan)}.hero{
+    }/* THEME STATES */
+body.theme-shounen{
+  --bg-main: linear-gradient(180deg,#0b0b14,#141428);
+  --accent-1:#7c6cff;
+  --accent-2:#4ef0ff;
+  --card-glass:rgba(255,255,255,.12);
+}
+
+body.theme-shojo{
+  --bg-main: linear-gradient(180deg,#fff0f7,#ffd6ea);
+  --accent-1:#ff7abf;
+  --accent-2:#ffb3da;
+  --card-glass:rgba(255,255,255,.55);
+  color:#3a2a33;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif}
+
+body{
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(124,108,255,.35), transparent 40%),
+    radial-gradient(1000px 500px at 90% 10%, rgba(255,78,205,.35), transparent 40%),
+    var(--bg-main);
+  min-height:100vh;overflow-x:hidden;
+  transition:background .5s,color .5s
+}
+
+header{
+  position:sticky;top:0;z-index:9;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(20,20,40,.75), rgba(20,20,40,.35));
+  border-bottom:1px solid rgba(255,255,255,.12)
+}
+
+body.theme-shojo header{
+  background: linear-gradient(180deg, rgba(255,240,247,.85), rgba(255,214,234,.65));
+  border-bottom:1px solid rgba(255,122,191,.35)
+}
+
+.nav{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:18px}
+.logo{font-weight:800;letter-spacing:.5px}
+.logo span{color:var(--accent-1)}
+.nav a{color:inherit;text-decoration:none;margin-left:16px;opacity:.9}
+
+.hero{
   max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;
   padding:90px 18px 40px
 }
-.badge{display:inline-flex;gap:8px;align-items:center;background:var(--glass);border:1px solid rgba(255,255,255,.18);padding:8px 14px;border-radius:999px}
-.badge b{color:var(--cyan)}
+
+.badge{display:inline-flex;gap:8px;align-items:center;background:var(--card-glass);border:1px solid rgba(255,255,255,.18);padding:8px 14px;border-radius:999px}
 h1{font-size:3rem;line-height:1.05;margin:14px 0}
-h1 em{color:var(--pink);font-style:normal}
+h1 em{color:var(--accent-1);font-style:normal}
 .lead{opacity:.9;max-width:520px}
-.cta{display:flex;gap:14px;margin-top:22px}
+
 .btn{border:none;border-radius:999px;padding:14px 22px;font-weight:600;cursor:pointer}
-.btn.primary{background:linear-gradient(135deg,var(--pink),var(--purple));color:#fff}
-.btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.35)}
-.btn:hover{transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(135deg,var(--accent-1),var(--accent-2));color:#fff}
+.btn.ghost{background:transparent;color:inherit;border:1px solid rgba(255,255,255,.35)}
 
 .hero-art{
   position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/5;
   background:linear-gradient(135deg, rgba(124,108,255,.25), rgba(78,240,255,.15));
-  box-shadow:0 30px 80px rgba(0,0,0,.45)
+  box-shadow:0 30px 80px rgba(0,0,0,.35)
 }
-.hero-art img{width:100%;height:100%;object-fit:cover;opacity:.92}
-.hero-art .glow{position:absolute;inset:-20%;background:radial-gradient(circle at 50% 50%, rgba(255,78,205,.45), transparent 40%)}
+
+body.theme-shojo .hero-art{
+  background:linear-gradient(135deg, rgba(255,122,191,.35), rgba(255,179,218,.45));
+}
 
 .section{max-width:1100px;margin:40px auto;padding:0 18px}
-.section h2{font-size:2rem;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
 .card{
-  background:var(--glass);border:1px solid rgba(255,255,255,.18);
+  background:var(--card-glass);
   border-radius:22px;overflow:hidden;transition:.25s
 }
-.card:hover{transform:translateY(-6px)}
 .thumb{height:140px;background:#111}
 .thumb img{width:100%;height:100%;object-fit:cover}
-.card .content{padding:16px}
-.tag{display:inline-block;font-size:.75rem;background:rgba(0,0,0,.35);padding:6px 10px;border-radius:999px;margin-bottom:8px}
 
-.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
-.gallery img{width:100%;height:160px;object-fit:cover;border-radius:18px;border:1px solid rgba(255,255,255,.18)}
+.gallery img{width:100%;height:160px;object-fit:cover;border-radius:18px}
 
-footer{opacity:.7;text-align:center;padding:28px}
+footer{text-align:center;padding:28px;opacity:.7}
 
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr;padding-top:70px}
-  h1{font-size:2.4rem}
+  .hero{grid-template-columns:1fr}
+  h1{font-size:2.3rem}
 }
 
   </style>
@@ -145,15 +166,25 @@ footer{opacity:.7;text-align:center;padding:28px}
     }
   };
 
+  // LOAD SAVED THEME
+  const savedTheme = localStorage.getItem('otaku-theme');
+  if (savedTheme && themes[savedTheme]) {
+    body.className = themes[savedTheme].class;
+    toggleBtn.textContent = themes[savedTheme].label;
+  }
+
+  // TOGGLE + SAVE THEME
   toggleBtn.addEventListener('click', () => {
     if (body.classList.contains('theme-shounen')) {
       body.classList.remove('theme-shounen');
       body.classList.add('theme-shojo');
       toggleBtn.textContent = themes.shojo.label;
+      localStorage.setItem('otaku-theme', 'shojo');
     } else {
       body.classList.remove('theme-shojo');
       body.classList.add('theme-shounen');
       toggleBtn.textContent = themes.shounen.label;
+      localStorage.setItem('otaku-theme', 'shounen');
     }
   });
 </script></body>
