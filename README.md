@@ -80,8 +80,9 @@ footer{opacity:.7;text-align:center;padding:28px}
 
   </style>
 </head>
-<body><header>
+<body class="theme-shounen"><header>
   <div class="nav">
+    <button id="themeToggle" style="margin-right:12px;border-radius:999px;padding:8px 14px;border:1px solid rgba(255,255,255,.4);background:transparent;color:#fff;cursor:pointer;font-weight:600">🌸 Shojo Mode</button>
     <div class="logo">Otaku<span>Hub</span></div>
     <nav>
       <a href="#">Home</a>
@@ -129,5 +130,31 @@ footer{opacity:.7;text-align:center;padding:28px}
     <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop" />
     <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop" />
   </div>
-</section><footer>© 2026 OtakuHub • Built with love 💖</footer></body>
+</section><footer>© 2026 OtakuHub • Built with love 💖</footer><script>
+  const toggleBtn = document.getElementById('themeToggle');
+  const body = document.body;
+
+  const themes = {
+    shounen: {
+      class: 'theme-shounen',
+      label: '🌸 Shojo Mode'
+    },
+    shojo: {
+      class: 'theme-shojo',
+      label: '🖤 Shounen Mode'
+    }
+  };
+
+  toggleBtn.addEventListener('click', () => {
+    if (body.classList.contains('theme-shounen')) {
+      body.classList.remove('theme-shounen');
+      body.classList.add('theme-shojo');
+      toggleBtn.textContent = themes.shojo.label;
+    } else {
+      body.classList.remove('theme-shojo');
+      body.classList.add('theme-shounen');
+      toggleBtn.textContent = themes.shounen.label;
+    }
+  });
+</script></body>
 </html>
