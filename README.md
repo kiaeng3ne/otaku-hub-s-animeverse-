@@ -19,6 +19,7 @@ body.theme-shounen{
   --accent-1:#7c6cff;
   --accent-2:#4ef0ff;
   --card-glass:rgba(255,255,255,.12);
+  color:#f4f4ff;
 }
 
 body.theme-shojo{
@@ -37,6 +38,7 @@ body{
     radial-gradient(1000px 500px at 90% 10%, rgba(255,78,205,.35), transparent 40%),
     var(--bg-main);
   min-height:100vh;overflow-x:hidden;
+  color:#f4f4ff;
   transition:background .5s,color .5s
 }
 
